@@ -44,5 +44,5 @@ with col2:
         st.session_state.canvas_key = f"canvas_{np.random.randint(0,100000)}"
         st.rerun()
 
-st.markdown("**Developed by: Aashish**")
+st.markdown("**Developed by: Aashish Kamait**")
 
