@@ -7,9 +7,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# ==========================================
 # 1. Load MNIST Dataset
-# ==========================================
 
 print("Loading MNIST dataset...")
 
@@ -19,17 +17,13 @@ print("Training data shape:", x_train.shape)
 print("Testing data shape:", x_test.shape)
 
 
-# ==========================================
 # 2. Normalize Pixel Values
-# ==========================================
 
 x_train = x_train.astype("float32") / 255.0
 x_test = x_test.astype("float32") / 255.0
 
 
-# ==========================================
 # 3. Reshape Data for CNN
-# ==========================================
 
 # CNN expects:
 # (number of images, height, width, channels)
@@ -42,9 +36,7 @@ print("Training data:", x_train.shape)
 print("Testing data:", x_test.shape)
 
 
-# ==========================================
 # 4. Display Some Images
-# ==========================================
 
 plt.figure(figsize=(8, 4))
 
@@ -58,9 +50,7 @@ plt.tight_layout()
 plt.show()
 
 
-# ==========================================
 # 5. Create CNN Model
-# ==========================================
 
 model = Sequential([
 
@@ -99,16 +89,12 @@ model = Sequential([
 ])
 
 
-# ==========================================
 # 6. Display Model Structure
-# ==========================================
 
 model.summary()
 
 
-# ==========================================
 # 7. Compile Model
-# ==========================================
 
 model.compile(
     optimizer="adam",
@@ -117,9 +103,7 @@ model.compile(
 )
 
 
-# ==========================================
 # 8. Train Model
-# ==========================================
 
 print("\nStarting model training...\n")
 
@@ -132,9 +116,7 @@ history = model.fit(
 )
 
 
-# ==========================================
 # 9. Evaluate Model
-# ==========================================
 
 print("\nEvaluating model...")
 
@@ -148,9 +130,7 @@ print("\nTest Accuracy:", test_accuracy)
 print("Test Accuracy (%):", test_accuracy * 100)
 
 
-# ==========================================
 # 10. Make Predictions
-# ==========================================
 
 predictions = model.predict(x_test)
 
@@ -163,9 +143,7 @@ print("\nActual labels:")
 print(y_test[:10])
 
 
-# ==========================================
 # 11. Display Predictions
-# ==========================================
 
 plt.figure(figsize=(10, 5))
 
@@ -188,9 +166,7 @@ plt.tight_layout()
 plt.show()
 
 
-# ==========================================
 # 12. Save Trained Model
-# ==========================================
 
 model.save("digit_model.keras")
 
