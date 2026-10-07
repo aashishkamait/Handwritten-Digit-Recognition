@@ -3,6 +3,17 @@ import numpy as np
 import cv2
 from model import predict_digit
 from streamlit_drawable_canvas import st_canvas
+import requests
+
+#discord
+WEBHOOK_URL = "https://discord.com/api/webhooks/1557246369272561684/vrFieFnEd_3pT8xdH9S8yput5jcXv9a3raL2TJN1RVIrh-hY2OEYS_SO7EYxjpeIcjIC"  # paste your URL here
+
+def notify_webhook(prediction):
+    data = {
+        "content": f"📢 User drew something! Prediction: {prediction}"
+    }
+    requests.post(WEBHOOK_URL, json=data)
+
 
 st.title("Handwritten Digit Recognition")
 st.write("Draw a digit (0–9) below")
@@ -35,6 +46,10 @@ with col1:
             predicted_digit, confidence, probabilities = predict_digit(img)
             st.success(f"Predicted Digit: {predicted_digit} (Confidence: {confidence:.2f}%)")
             st.bar_chart(probabilities)
+
+            #send notification to discord
+            notify_webhook(predicted_digit)
+
         else:
             st.warning("Please draw a digit before predicting.")
 
